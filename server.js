@@ -4,7 +4,7 @@ const cors = require('cors');
 const twilio = require('twilio');
 
 // Load environment variables from config.env
-require('dotenv').config({ path: './config.env' });
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Twilio Client
 const twilioClient = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-const MESSAGING_SERVICE_SID = "MGc05835f861b933d05b45f3e58d3c4d9f";
+const MESSAGING_SERVICE_SID = process.env.MESSAGING_SERVICE_SID;
 
 // --- Schemas & Models ---
 
