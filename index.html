@@ -399,6 +399,8 @@
           other: "Other",
           single: "Single",
           married: "Married",
+          widowed: "Widowed",
+          divorced: "Divorced",
           yes: "Yes",
           no: "No",
           eduOptions: {
@@ -408,10 +410,12 @@
             ug: "Undergraduate",
             pg: "Masters Degree",
             phd: "Doctoral",
-          },
         },
-        hi: {
-          title: "सरकारी सेवा में लॉग इन करें",
+        isGovt: "Government Employee?",
+        isFarmer: "Are you a Farmer?",
+      },
+      hi: {
+        title: "सरकारी सेवा में लॉग इन करें",
           subtitle: "सरकारी योजनाओं के लिए अपनी पात्रता जाँचें",
           phonePH: "मोबाइल नंबर दर्ज करें (+91)",
           passwordPH: "पासवर्ड दर्ज करें",
@@ -445,6 +449,8 @@
           other: "अन्य",
           single: "अविवाहित",
           married: "विवाहित",
+          widowed: "विधवा",
+          divorced: "तलाकशुदा",
           yes: "हाँ",
           no: "नहीं",
           eduOptions: {
@@ -455,6 +461,8 @@
             pg: "स्नातकोत्तर",
             phd: "डॉक्टरेट",
           },
+        isGovt: "क्या आप सरकारी कर्मचारी हैं?",
+        isFarmer: "क्या आप किसान हैं?",
         },
         ta: {
           title: "GovtSewa உள்நுழைய",
@@ -491,6 +499,8 @@
           other: "மற்றவை",
           single: "திருமணமாகாதவர்",
           married: "திருமணமானவர்",
+          widowed: "விதவை",
+          divorced: "விவாகரத்து",
           yes: "ஆம்",
           no: "இல்லை",
           eduOptions: {
@@ -501,6 +511,8 @@
             pg: "முதுகலை",
             phd: "டாக்டர் பட்டம்",
           },
+        isGovt: "அரசு ஊழியரா?",
+        isFarmer: "விவசாயியா?",
         },
       };
 
@@ -512,8 +524,10 @@
           link: "https://pmkisan.gov.in",
           rules: {
             minAge: 18,
-            maxIncome: 2000000,
+            maxIncome: 500000,
             cats: ["General", "OBC", "SC", "ST"],
+          mustBeFarmer: true,
+          excludeGovt: true
           },
         },
         {
@@ -521,7 +535,7 @@
           name: "Post Matric Scholarship (SC)",
           desc: "Education aid for SC students.",
           link: "https://socialjustice.gov.in",
-          rules: { minAge: 16, maxIncome: 250000, cats: ["SC"] },
+          rules: { minAge: 16, maxIncome: 250000, cats: ["SC", "ST"] },
         },
         {
           id: 3,
@@ -545,6 +559,7 @@
             maxIncome: 250000,
             cats: ["General", "OBC", "SC", "ST"],
             gender: "Female",
+          excludeGovt: true
           },
         },
         {
@@ -557,6 +572,7 @@
             maxIncome: 100000000,
             cats: ["General", "OBC", "SC", "ST"],
             gender: "Female",
+          excludeGovt: true,
           },
         },
         {
@@ -568,6 +584,7 @@
             minAge: 0,
             maxIncome: 120000,
             cats: ["General", "OBC", "SC", "ST"],
+          excludeGovt: true
           },
         },
         {
@@ -582,7 +599,7 @@
           name: "TN Old Age Pension Scheme",
           desc: "Monthly pension of ₹1000 for senior citizens.",
           link: "https://tnega.tn.gov.in",
-          rules: { minAge: 60, maxIncome: 50000, cats: ["General", "OBC", "SC", "ST"] }
+          rules: { minAge: 60, maxIncome: 50000, cats: ["General", "OBC", "SC", "ST"], excludeGovt: true }
         },
         {
           id: 9,
@@ -596,21 +613,21 @@
           name: "Unemployment Assistance Scheme",
           desc: "Financial aid for unemployed youth waiting for jobs.",
           link: "https://tnvelaivaaippu.gov.in",
-          rules: { minAge: 18, maxIncome: 200000, cats: ["General", "OBC", "SC", "ST"] }
+          rules: { minAge: 18, maxIncome: 200000, cats: ["General", "OBC", "SC", "ST"], excludeGovt: true }
         },
         {
           id: 11,
           name: "Widow Pension Scheme",
           desc: "Financial support for destitute widows.",
           link: "https://tnega.tn.gov.in",
-          rules: { minAge: 18, maxIncome: 100000, cats: ["General", "OBC", "SC", "ST"], gender: "Female" }
+          rules: { minAge: 18, maxIncome: 100000, cats: ["General", "OBC", "SC", "ST"], gender: "Female", maritalStatus: "Widowed", excludeGovt: true }
         },
         {
           id: 12,
-          name: "Moovalur Ramamirtham Marriage Assistance",
-          desc: "Financial aid and gold coin for daughters' marriage.",
+          name: "EVR Maniammaiyar Ninaivu Marriage Assistance",
+          desc: "Financial aid for daughter's marriage of poor widows.",
           link: "https://tnsocialwelfare.tn.gov.in",
-          rules: { minAge: 18, maxIncome: 72000, cats: ["General", "OBC", "SC", "ST"], gender: "Female" }
+          rules: { minAge: 18, maxIncome: 72000, cats: ["General", "OBC", "SC", "ST"], gender: "Female", maritalStatus: "Single" }
         },
         {
           id: 13,
@@ -666,21 +683,21 @@
           name: "TN Farmers Social Security Scheme",
           desc: "Pension and accident relief for farmers.",
           link: "https://www.tn.gov.in",
-          rules: { minAge: 18, maxIncome: 100000, cats: ["General", "OBC", "SC", "ST"] }
+        rules: { minAge: 18, maxIncome: 100000, cats: ["General", "OBC", "SC", "ST"], mustBeFarmer: true }
         },
         {
           id: 21,
           name: "Destitute Deserted Wives Pension",
           desc: "Pension for wives deserted by husbands.",
           link: "https://tnega.tn.gov.in",
-          rules: { minAge: 30, maxIncome: 100000, cats: ["General", "OBC", "SC", "ST"], gender: "Female" }
+          rules: { minAge: 30, maxIncome: 100000, cats: ["General", "OBC", "SC", "ST"], gender: "Female", maritalStatus: "Divorced", excludeGovt: true }
         },
         {
           id: 22,
           name: "Inter-caste Marriage Assistance",
           desc: "Incentive for inter-caste marriages.",
           link: "https://tnsocialwelfare.tn.gov.in",
-          rules: { minAge: 18, maxIncome: 100000000, cats: ["General", "OBC", "SC", "ST"] }
+          rules: { minAge: 18, maxIncome: 100000000, cats: ["General", "OBC", "SC", "ST"], maritalStatus: "Married" }
         },
         {
           id: 23,
@@ -691,17 +708,17 @@
         },
         {
           id: 24,
-          name: "Amma Two Wheeler Scheme",
-          desc: "Subsidy for working women to buy two-wheelers.",
-          link: "https://www.tn.gov.in",
-          rules: { minAge: 18, maxIncome: 250000, cats: ["General", "OBC", "SC", "ST"], gender: "Female" }
+          name: "Vidiyal Payanam (Free Bus Travel)",
+          desc: "Free travel for women in ordinary town buses.",
+          link: "https://transport.tn.gov.in",
+          rules: { minAge: 5, maxIncome: 100000000, cats: ["General", "OBC", "SC", "ST"], gender: "Female" }
         },
         {
           id: 25,
           name: "TN Urban Employment Scheme",
           desc: "Employment opportunities for urban poor.",
           link: "https://tn.gov.in",
-          rules: { minAge: 18, maxIncome: 200000, cats: ["General", "OBC", "SC", "ST"] }
+          rules: { minAge: 18, maxIncome: 200000, cats: ["General", "OBC", "SC", "ST"], excludeGovt: true }
         },
         {
           id: 26,
@@ -736,7 +753,7 @@
           name: "Uzhavar Sandhai",
           desc: "Direct market access for farmers.",
           link: "https://agritech.tnau.ac.in",
-          rules: { minAge: 18, maxIncome: 100000000, cats: ["General", "OBC", "SC", "ST"] }
+        rules: { minAge: 18, maxIncome: 100000000, cats: ["General", "OBC", "SC", "ST"], mustBeFarmer: true }
         },
         {
           id: 31,
@@ -764,6 +781,7 @@
             minAge: 15,
             maxIncome: 100000000,
             cats: ["General", "OBC", "SC", "ST"],
+          excludeGovt: true,
           },
         },
         {
@@ -787,6 +805,7 @@
             minAge: 10,
             maxIncome: 100000000,
             cats: ["General", "OBC", "SC", "ST"],
+          excludeGovt: true,
           },
         },
         {
@@ -876,6 +895,8 @@
         religion: "Hindu",
         isDisabled: false,
         education: "pass12",
+      isGovtEmployee: false,
+      isFarmer: false
       };
       let userPhone = "";
       let currentTab = "schemes";
@@ -945,6 +966,8 @@
                                     <select id="maritalInput" class="form-control">
                                         <option value="Single">${t.single}</option>
                                         <option value="Married">${t.married}</option>
+                                        <option value="Widowed">${t.widowed}</option>
+                                        <option value="Divorced">${t.divorced}</option>
                                     </select>
                                 </div>
 
@@ -993,11 +1016,26 @@
                                         <option value="true">${t.yes}</option>
                                     </select>
                                 </div>
+
+                                <div>
+                                    <label>${t.isGovt}</label>
+                                    <select id="govtInput" class="form-control">
+                                        <option value="false">${t.no}</option>
+                                        <option value="true">${t.yes}</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label>${t.isFarmer}</label>
+                                    <select id="farmerInput" class="form-control">
+                                        <option value="false">${t.no}</option>
+                                        <option value="true">${t.yes}</option>
+                                    </select>
+                                </div>
                             </div>
                             
                             <button type="submit" class="btn">${t.checkBtn}</button>
-                        </form>
-                    </div>
+
                 `;
         } else if (currentPage === "results") {
           const dataList = currentTab === "schemes" ? schemes : courses;
@@ -1185,6 +1223,10 @@
         userDetails.isDisabled =
           document.getElementById("disabledInput").value === "true";
         userDetails.education = document.getElementById("eduInput").value;
+      userDetails.isGovtEmployee =
+        document.getElementById("govtInput").value === "true";
+      userDetails.isFarmer =
+        document.getElementById("farmerInput").value === "true";
 
         // Save search data to Atlas
         const btn = e.target.querySelector("button");
@@ -1247,16 +1289,22 @@
         // New Logic Checks
         const genderOk =
           !scheme.rules.gender || scheme.rules.gender === userDetails.gender;
+        const maritalOk = 
+          !scheme.rules.maritalStatus || scheme.rules.maritalStatus === userDetails.maritalStatus;
         const disabledOk =
           scheme.rules.isDisabled === undefined ||
           scheme.rules.isDisabled === userDetails.isDisabled;
 
+      
         // Education Check
         const userEduLevel = eduMap[userDetails.education] || 0;
         const schemeEduLevel = eduMap[scheme.rules.minEdu] || 0; // Default to 0 (below10) if not specified
-        const eduOk = userEduLevel >= schemeEduLevel;
+      const eduOk = userEduLevel >= schemeEduLevel;
 
-        return ageOk && incomeOk && catOk && genderOk && disabledOk && eduOk;
+      const farmerOk = !scheme.rules.mustBeFarmer || userDetails.isFarmer;
+      const govtOk = !scheme.rules.excludeGovt || !userDetails.isGovtEmployee;
+
+      return ageOk && incomeOk && catOk && genderOk && maritalOk && disabledOk && eduOk && farmerOk && govtOk;
       }
 
       // --- BACKEND INTEGRATION ---

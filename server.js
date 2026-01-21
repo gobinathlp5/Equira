@@ -41,6 +41,8 @@ const eligibilityCheckSchema = new mongoose.Schema({
     religion: String,
     isDisabled: Boolean,
     education: String,
+    isGovtEmployee: Boolean,
+    isFarmer: Boolean,
     timestamp: { type: Date, default: Date.now }
 });
 const EligibilityCheck = mongoose.model('EligibilityCheck', eligibilityCheckSchema);
