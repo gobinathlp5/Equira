@@ -413,6 +413,15 @@
         },
         isGovt: "Government Employee?",
         isFarmer: "Are you a Farmer?",
+        dashboardTitle: "Our Services",
+        logout: "Logout",
+        backToDash: "Back to Dashboard",
+        myGovDesc: "Find government schemes you are eligible for based on your profile. Includes poverty alleviation, education, and agriculture support.",
+        healthDesc: "Locate nearby hospitals, clinics, and emergency services. Find help for accidents, pregnancy, and general health issues.",
+        filterAll: "All",
+        filterHealth: "Health",
+        filterEmp: "Employment",
+        filterFin: "Financial",
       },
       hi: {
         title: "सरकारी सेवा में लॉग इन करें",
@@ -463,9 +472,18 @@
           },
         isGovt: "क्या आप सरकारी कर्मचारी हैं?",
         isFarmer: "क्या आप किसान हैं?",
+        dashboardTitle: "हमारी सेवाएँ",
+        logout: "लॉग आउट",
+        backToDash: "डैशबोर्ड पर वापस",
+        myGovDesc: "अपनी प्रोफ़ाइल के आधार पर सरकारी योजनाएं खोजें। इसमें गरीबी उन्मूलन, शिक्षा और कृषि सहायता शामिल है।",
+        healthDesc: "आसपास के अस्पताल, क्लीनिक और आपातकालीन सेवाएं खोजें। दुर्घटनाओं, गर्भावस्था और सामान्य स्वास्थ्य समस्याओं के लिए मदद पाएं।",
+        filterAll: "सभी",
+        filterHealth: "स्वास्थ्य",
+        filterEmp: "रोजगार",
+        filterFin: "वित्तीय",
         },
         ta: {
-          title: "GovtSewa உள்நுழைய",
+          title: "MyGovGuide உள்நுழைய",
           subtitle: "அரசு திட்டங்களுக்கான தகுதியை சரிபார்க்கவும்",
           phonePH: "மொபைல் எண் (+91)",
           passwordPH: "கடவுச்சொல்லை உள்ளிடவும்",
@@ -513,12 +531,22 @@
           },
         isGovt: "அரசு ஊழியரா?",
         isFarmer: "விவசாயியா?",
+        dashboardTitle: "எங்கள் சேவைகள்",
+        logout: "வெளியேறு",
+        backToDash: "முகப்பு பலகைக்கு திரும்பு",
+        myGovDesc: "உங்கள் சுயவிவரத்தின் அடிப்படையில் தகுதியான அரசு திட்டங்களைக் கண்டறியவும். வறுமை ஒழிப்பு, கல்வி மற்றும் விவசாய ஆதரவு ஆகியவை அடங்கும்.",
+        healthDesc: "அருகிலுள்ள மருத்துவமனைகள், கிளினிக்குகள் மற்றும் அவசர சேவைகளைக் கண்டறியவும். விபத்துக்கள், கர்ப்பம் மற்றும் பொதுவான சுகாதார பிரச்சினைகளுக்கு உதவி பெறவும்.",
+        filterAll: "அனைத்தும்",
+        filterHealth: "சுகாதாரம்",
+        filterEmp: "வேலைவாய்ப்பு",
+        filterFin: "நிதி",
         },
       };
 
       const schemes = [
         {
           id: 1,
+          category: "Financial",
           name: "PM Kisan Samman Nidhi",
           desc: "Rs 6000/year for farmers.",
           link: "https://pmkisan.gov.in",
@@ -532,6 +560,7 @@
         },
         {
           id: 2,
+          category: "Financial",
           name: "Post Matric Scholarship (SC)",
           desc: "Education aid for SC students.",
           link: "https://socialjustice.gov.in",
@@ -539,6 +568,7 @@
         },
         {
           id: 3,
+          category: "Employment",
           name: "UPSC Civil Services",
           desc: "National Competitive Exam.",
           link: "https://upsc.gov.in",
@@ -551,6 +581,7 @@
         },
         {
           id: 4,
+          category: "Financial",
           name: "Kalaignar Magalir Urimai Thogai",
           desc: "₹1000/month for women heads of households.",
           link: "https://kmut.tn.gov.in",
@@ -564,6 +595,7 @@
         },
         {
           id: 5,
+          category: "Financial",
           name: "Pudhumai Penn Scheme",
           desc: "₹1000/month for girl students from govt schools.",
           link: "https://www.pudhumaipenn.tn.gov.in",
@@ -577,6 +609,7 @@
         },
         {
           id: 6,
+          category: "Health",
           name: "TN Chief Minister's Health Insurance",
           desc: "Free medical treatment up to ₹5 Lakhs.",
           link: "https://www.cmchistn.com",
@@ -589,6 +622,7 @@
         },
         {
           id: 7,
+          category: "Health",
           name: "Dr. Muthulakshmi Reddy Maternity Benefit",
           desc: "Financial assistance of ₹18,000 for pregnant women.",
           link: "https://picme.tn.gov.in",
@@ -596,6 +630,7 @@
         },
         {
           id: 8,
+          category: "Financial",
           name: "TN Old Age Pension Scheme",
           desc: "Monthly pension of ₹1000 for senior citizens.",
           link: "https://tnega.tn.gov.in",
@@ -603,6 +638,7 @@
         },
         {
           id: 9,
+          category: "Financial",
           name: "Differently Abled Pension Scheme",
           desc: "Monthly assistance for differently abled persons.",
           link: "https://scd.tn.gov.in",
@@ -610,6 +646,7 @@
         },
         {
           id: 10,
+          category: "Employment",
           name: "Unemployment Assistance Scheme",
           desc: "Financial aid for unemployed youth waiting for jobs.",
           link: "https://tnvelaivaaippu.gov.in",
@@ -617,6 +654,7 @@
         },
         {
           id: 11,
+          category: "Financial",
           name: "Widow Pension Scheme",
           desc: "Financial support for destitute widows.",
           link: "https://tnega.tn.gov.in",
@@ -624,6 +662,7 @@
         },
         {
           id: 12,
+          category: "Financial",
           name: "EVR Maniammaiyar Ninaivu Marriage Assistance",
           desc: "Financial aid for daughter's marriage of poor widows.",
           link: "https://tnsocialwelfare.tn.gov.in",
@@ -631,6 +670,7 @@
         },
         {
           id: 13,
+          category: "Financial",
           name: "Chief Minister’s Girl Child Protection",
           desc: "Fixed deposit for girl children to ensure education.",
           link: "https://tnsocialwelfare.tn.gov.in",
@@ -638,6 +678,7 @@
         },
         {
           id: 14,
+          category: "Financial",
           name: "Free Laptop Scheme",
           desc: "Free laptops for students in Govt/Aided schools.",
           link: "https://www.tn.gov.in",
@@ -645,6 +686,7 @@
         },
         {
           id: 15,
+          category: "Employment",
           name: "Naan Mudhalvan Scheme",
           desc: "Skill development and career guidance for youth.",
           link: "https://www.naanmudhalvan.tn.gov.in",
@@ -652,6 +694,7 @@
         },
         {
           id: 16,
+          category: "Employment",
           name: "TAHDCO Economic Development",
           desc: "Loans and subsidies for SC/ST entrepreneurs.",
           link: "http://tahdco.tn.gov.in",
@@ -659,6 +702,7 @@
         },
         {
           id: 17,
+          category: "Employment",
           name: "UYEGP Loan Scheme",
           desc: "Loan subsidy for unemployed youth to start business.",
           link: "https://msmeonline.tn.gov.in",
@@ -666,6 +710,7 @@
         },
         {
           id: 18,
+          category: "Employment",
           name: "NEEDS Scheme",
           desc: "Entrepreneurship scheme for educated youth.",
           link: "https://msmeonline.tn.gov.in",
@@ -673,6 +718,7 @@
         },
         {
           id: 19,
+          category: "Financial",
           name: "Green House Scheme (Pasumai Veedu)",
           desc: "Construction of solar-powered green houses.",
           link: "https://tnrd.gov.in",
@@ -680,6 +726,7 @@
         },
         {
           id: 20,
+          category: "Financial",
           name: "TN Farmers Social Security Scheme",
           desc: "Pension and accident relief for farmers.",
           link: "https://www.tn.gov.in",
@@ -687,6 +734,7 @@
         },
         {
           id: 21,
+          category: "Financial",
           name: "Destitute Deserted Wives Pension",
           desc: "Pension for wives deserted by husbands.",
           link: "https://tnega.tn.gov.in",
@@ -694,6 +742,7 @@
         },
         {
           id: 22,
+          category: "Financial",
           name: "Inter-caste Marriage Assistance",
           desc: "Incentive for inter-caste marriages.",
           link: "https://tnsocialwelfare.tn.gov.in",
@@ -701,6 +750,7 @@
         },
         {
           id: 23,
+          category: "Employment",
           name: "Satyavani Muthu Free Sewing Machine",
           desc: "Free sewing machines for widows and poor women.",
           link: "https://tnsocialwelfare.tn.gov.in",
@@ -708,6 +758,7 @@
         },
         {
           id: 24,
+          category: "Financial",
           name: "Vidiyal Payanam (Free Bus Travel)",
           desc: "Free travel for women in ordinary town buses.",
           link: "https://transport.tn.gov.in",
@@ -715,6 +766,7 @@
         },
         {
           id: 25,
+          category: "Employment",
           name: "TN Urban Employment Scheme",
           desc: "Employment opportunities for urban poor.",
           link: "https://tn.gov.in",
@@ -722,6 +774,7 @@
         },
         {
           id: 26,
+          category: "Health",
           name: "Sanitary Napkin Scheme",
           desc: "Free sanitary napkins for adolescent girls.",
           link: "https://www.tn.gov.in",
@@ -729,6 +782,7 @@
         },
         {
           id: 27,
+          category: "Health",
           name: "Nutritious Meal Scheme",
           desc: "Free noon meals for school children.",
           link: "https://www.tn.gov.in",
@@ -736,6 +790,7 @@
         },
         {
           id: 28,
+          category: "Financial",
           name: "Free Bus Pass for Students",
           desc: "Free travel for school and college students.",
           link: "https://www.tn.gov.in",
@@ -743,6 +798,7 @@
         },
         {
           id: 29,
+          category: "Employment",
           name: "Textile Entrepreneurship Scheme",
           desc: "Support for powerloom and textile entrepreneurs.",
           link: "https://www.tn.gov.in",
@@ -750,6 +806,7 @@
         },
         {
           id: 30,
+          category: "Employment",
           name: "Uzhavar Sandhai",
           desc: "Direct market access for farmers.",
           link: "https://agritech.tnau.ac.in",
@@ -757,6 +814,7 @@
         },
         {
           id: 31,
+          category: "Financial",
           name: "Illam Thedi Kalvi",
           desc: "Education at doorstep for children.",
           link: "https://illamthedikalvi.tnschools.gov.in",
@@ -764,6 +822,7 @@
         },
         {
           id: 32,
+          category: "Health",
           name: "Makkalai Thedi Maruthuvam",
           desc: "Healthcare services at doorstep.",
           link: "https://tn.gov.in",
@@ -887,19 +946,20 @@
       let currentLang = "en";
       let currentPage = "login"; // login, input, results
       let userDetails = {
-        age: "",
-        income: "",
-        category: "General",
-        gender: "Male",
-        maritalStatus: "Single",
-        religion: "Hindu",
+        age: "Select",
+        income: "Select",
+        category: "Select",
+        gender: "Select",
+        maritalStatus: "Select",
+        religion: "Select",
         isDisabled: false,
-        education: "pass12",
+        education: "Select",
       isGovtEmployee: false,
       isFarmer: false
       };
       let userPhone = "";
       let currentTab = "schemes";
+      let currentFilter = "All";
 
       // --- INITIAL RENDER ---
       render();
@@ -941,9 +1001,31 @@
                         </p>
                     </div>
                 `;
+        } else if (currentPage === "dashboard") {
+          app.innerHTML = `
+                    <div class="card">
+                        <div style="text-align: left; margin-bottom: 10px;">
+                            <button class="btn btn-text" onclick="logout()" style="width: auto; padding: 0;">← ${t.logout}</button>
+                        </div>
+                        <h2>${t.dashboardTitle}</h2>
+                        <div style="display: flex; gap: 20px; margin-top: 20px;">
+                            <div style="flex: 1;">
+                                <button class="btn" style="background-color: #6a7880;" onclick="skipToSchemes()">MyGovGuide</button>
+                                <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">${t.myGovDesc}</p>
+                            </div>
+                            <div style="flex: 1;">
+                                <button class="btn" style="background-color: #6a7880;" onclick="window.location.href='http://localhost:5001'">Rural Health Connect</button>
+                                <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">${t.healthDesc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
         } else if (currentPage === "input") {
           app.innerHTML = `
                     <div class="card">
+                        <div style="text-align: left; margin-bottom: 10px;">
+                            <button class="btn btn-text" onclick="backToDashboard()" style="width: auto; padding: 0;">← ${t.backToDash}</button>
+                        </div>
                         <h2>${t.enterDetails}</h2>
                         <form onsubmit="handleCheck(event)">
                             <div class="form-grid">
@@ -1040,6 +1122,7 @@
         } else if (currentPage === "results") {
           const dataList = currentTab === "schemes" ? schemes : courses;
           let resultsHTML = dataList
+            .filter(s => currentTab !== 'schemes' || currentFilter === 'All' || s.category === currentFilter)
             .map((s) => {
               const isEligible = checkLogic(s);
               const statusClass = isEligible ? "eligible" : "not-eligible";
@@ -1071,6 +1154,14 @@
                             <button class="tab-btn ${currentTab === "schemes" ? "active" : ""}" onclick="switchTab('schemes')">${t.schemesTab}</button>
                             <button class="tab-btn ${currentTab === "courses" ? "active" : ""}" onclick="switchTab('courses')">${t.coursesTab}</button>
                         </div>
+                        ${currentTab === 'schemes' ? `
+                            <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+                                <button class="btn" style="width: auto; padding: 5px 15px; font-size: 0.85rem; background-color: ${currentFilter === 'All' ? 'var(--gov-blue)' : '#999'};" onclick="setFilter('All')">${t.filterAll}</button>
+                                <button class="btn" style="width: auto; padding: 5px 15px; font-size: 0.85rem; background-color: ${currentFilter === 'Health' ? 'var(--gov-blue)' : '#999'};" onclick="setFilter('Health')">${t.filterHealth}</button>
+                                <button class="btn" style="width: auto; padding: 5px 15px; font-size: 0.85rem; background-color: ${currentFilter === 'Employment' ? 'var(--gov-blue)' : '#999'};" onclick="setFilter('Employment')">${t.filterEmp}</button>
+                                <button class="btn" style="width: auto; padding: 5px 15px; font-size: 0.85rem; background-color: ${currentFilter === 'Financial' ? 'var(--gov-blue)' : '#999'};" onclick="setFilter('Financial')">${t.filterFin}</button>
+                            </div>
+                        ` : ''}
                         <h2 style="text-align: center;">${t.resultsTitle}</h2>
                         <div class="results-grid">
                             ${resultsHTML}
@@ -1119,8 +1210,28 @@
         render();
       }
 
+      function setFilter(filter) {
+        currentFilter = filter;
+        render();
+      }
+
       function switchTab(tab) {
         currentTab = tab;
+        render();
+      }
+
+      function backToDashboard() {
+        currentPage = "dashboard";
+        render();
+      }
+
+      function logout() {
+        currentPage = "login";
+        render();
+      }
+
+      function skipToSchemes() {
+        currentPage = "input";
         render();
       }
 
@@ -1149,17 +1260,14 @@
           // Attempt to validate with Atlas
           const isValid = await validateCredentials(phone, password);
           if (isValid) {
-            currentPage = "input";
+            currentPage = "dashboard";
             render();
           } else {
             alert("Invalid Credentials. Please try again.");
           }
         } catch (error) {
           console.error("Login Error:", error);
-          alert("Connection error. Proceeding in offline mode for demo.");
-          // Fallback for demo purposes if DB is not configured
-          currentPage = "input";
-          render();
+          alert("Connection error. Please check your internet connection and try again.");
         } finally {
           btn.innerText = originalText;
           btn.disabled = false;
@@ -1238,7 +1346,7 @@
         const eligibleSchemes = schemes.filter((s) => checkLogic(s));
         if (eligibleSchemes.length > 0) {
           const smsBody =
-            "GovtSewa: You are eligible for:\n" +
+            "MyGovGuide: You are eligible for:\n" +
             eligibleSchemes.map((s) => `- ${s.name}: ${s.link}`).join("\n");
 
           sendSMS(userPhone, smsBody); // Fire and forget (don't await to keep UI fast)
@@ -1262,7 +1370,7 @@
         }
 
         const smsBody =
-          "GovtSewa Results:\n" +
+          "MyGovGuide Results:\n" +
           eligibleItems.map((s) => `- ${s.name}`).join("\n");
 
         const t = translations[currentLang];

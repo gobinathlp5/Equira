@@ -1,0 +1,218 @@
+:root {
+  --primary-blue: #000080; /* Navy Blue */
+  --accent-orange: #ff9933; /* Saffron */
+  --bg-light: #f5f7fa;
+  --text-dark: #333;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+header {
+  background-color: var(--white);
+  border-bottom: 4px solid var(--accent-orange);
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+}
+
+.lang-select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: var(--text-dark);
+}
+
+/* --- Main Card Layout --- */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns to top so it grows down */
+  padding: 40px 20px;
+}
+
+.main-card {
+  background: white;
+  width: 100%;
+  max-width: 700px; /* Wider than login to fit Map */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  border-top: 5px solid var(--primary-blue);
+}
+
+.card-header-icon { margin-bottom: 15px; }
+h2 { color: var(--text-dark); margin: 0; }
+.subtitle { color: #666; margin-bottom: 25px; font-size: 0.9rem; }
+
+/* --- Form Elements --- */
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.gps-btn {
+    background-color: var(--primary-blue); /* Changed to Blue to match theme */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.or-divider { font-size: 0.8rem; color: #888; font-weight: bold; }
+
+.filter-row {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.filter-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.filter-row select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.action-btn {
+    width: 100%;
+    background-color: var(--accent-orange);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.action-btn:hover { background-color: #e67e22; }
+
+/* --- Map & Results --- */
+#map {
+    height: 300px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 2px solid #eee;
+    z-index: 1; /* Keep below dropdowns */
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--primary-blue);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+/* --- Chatbot (kept original functionality, updated colors) --- */
+.chatbot-container {
+    position: fixed; bottom: 20px; right: 20px; width: 300px; z-index: 1000;
+}
+.chat-header {
+    background: var(--primary-blue); color: white; padding: 12px;
+    border-radius: 10px 10px 0 0; cursor: pointer; display: flex;
+    justify-content: space-between;
+}
+.chat-body { background: white; border: 1px solid #ccc; height: 300px; display: none; flex-direction: column; }
+.chat-messages { flex: 1; padding: 10px; overflow-y: auto; background: #f9f9f9; text-align: left;}
+.chat-input { display: flex; border-top: 1px solid #eee; }
+.chat-input input { flex: 1; padding: 10px; border: none; outline: none; }
+.chat-input button { background: white; border: none; color: var(--primary-blue); padding: 0 15px; cursor: pointer; }
+
+/* Spinner Helper */
+.hidden { display: none; }
+
+/* --- Results List --- */
+.hospital-card {
+    background: white;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-blue);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.hospital-card.emergency { border-left-color: #e74c3c; }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.h-name { font-weight: bold; font-size: 1.1rem; color: var(--primary-blue); }
+.h-dist { background: #eee; padding: 4px 8px; border-radius: 12px; font-size: 0.85rem; }
+.h-details { font-size: 0.9rem; color: #555; line-height: 1.5; }
+
+.action-btns {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.btn-call { background-color: #27ae60; }
+.btn-nav { background-color: #3498db; }

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Government Primary Health Centre, Athur",
+    "type": "Government PHC",
+    "latitude": 11.5865,
+    "longitude": 78.2345,
+    "address": "Main Road, Athur Village, Salem District",
+    "phone": "+91-427-2345678",
+    "emergency_services": true,
+    "specialties": ["general", "fever", "snake bite", "first aid"]
+  },
+  {
+    "id": 2,
+    "name": "City Multi-Specialty Hospital",
+    "type": "Private",
+    "latitude": 11.6010,
+    "longitude": 78.2500,
+    "address": "45, Gandhi Road, Salem",
+    "phone": "+91-98765-43210",
+    "emergency_services": true,
+    "specialties": ["cardiac", "accident", "surgery", "trauma"]
+  },
+  {
+    "id": 3,
+    "name": "Community Maternity Center",
+    "type": "Government",
+    "latitude": 11.5900,
+    "longitude": 78.2200,
+    "address": "Near Bus Stand, Athur",
+    "phone": "+91-427-2223333",
+    "emergency_services": false,
+    "specialties": ["pregnancy", "delivery", "pediatric", "maternity"]
+  },
+  {
+    "id": 4,
+    "name": "Rural Clinic & Pharmacy",
+    "type": "Private Clinic",
+    "latitude": 11.5500,
+    "longitude": 78.2100,
+    "address": "South Street, Narasingapuram",
+    "phone": "+91-99887-77665",
+    "emergency_services": false,
+    "specialties": ["fever", "general", "cold"]
+  },
+  {
+    "id": 5,
+    "name": "District General Hospital",
+    "type": "Government Hospital",
+    "latitude": 11.6643,
+    "longitude": 78.1460,
+    "address": "Collectorate Area, Salem",
+    "phone": "108",
+    "emergency_services": true,
+    "specialties": ["accident", "cardiac", "snake bite", "poison", "burns"]
+  }
+]
