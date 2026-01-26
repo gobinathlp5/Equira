@@ -4,143 +4,230 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Equira - A Unified Digital Ecosystem for Inclusive Growth</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-      /* --- CSS STYLES --- */
+      /* --- MODERN CSS STYLES --- */
       :root {
-        --gov-blue: #000080; /* Navy Blue */
-        --gov-orange: #ff9933; /* Saffron */
-        --gov-green: #138808; /* India Green */
-        --bg-light: #f2f5f9;
-        --white: #ffffff;
-        --text-main: #333333;
+        --primary-color: #2563eb;
+        --primary-dark: #1e40af;
+        --secondary-color: #f1f5f9;
+        --accent-color: #f97316;
+        --success-color: #22c55e;
+        --bg-color: #f8fafc;
+        --surface-color: #ffffff;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --border-color: #e2e8f0;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --radius: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg-light);
-
-        /* MyGovGuide Background */
-        background-image: url("nog");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        background-blend-mode: soft-light;
-
-        color: var(--text-main);
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-color);
+        /* Modern Gradient Background */
+        background-image:
+          radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+          radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+          radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        color: var(--text-primary);
         margin: 0;
         padding: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        line-height: 1.6;
       }
 
       /* Header */
       header {
-        background: var(--white);
-        border-bottom: 4px solid var(--gov-orange);
-        padding: 15px;
+        background: var(--surface-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.9);
+        height: 72px; /* Fix height to prevent shifts */
       }
 
       .logo {
         font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--gov-blue);
+        font-weight: 700;
+        color: var(--primary-color);
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
+        text-decoration: none;
       }
 
       /* Language Select */
       select {
-        padding: 5px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
+        padding: 0.5rem 0.6rem;
+        border-radius: 8px;
+        border: 2px solid var(--border-color);
+        background: var(--surface-color);
+        color: var(--text-primary);
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      select:hover {
+        border-color: var(--primary-color);
+      }
+      select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
       }
 
       /* Main Container */
       #app {
         display: flex;
         justify-content: center;
+        align-items: center;
         padding: 2rem 1rem;
         flex: 1;
       }
 
       /* Cards */
       .card {
-        background: var(--white);
+        background: var(--surface-color);
         padding: 3rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
         width: 100%;
         max-width: 800px;
         text-align: center;
-        border-top: 5px solid var(--gov-blue);
-        animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        border: 1px solid var(--border-color);
+        animation: fadeIn 0.6s ease-out;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--primary-dark)
+        );
       }
 
       /* Forms */
       #app input,
       #app select.form-control {
         width: 100%;
-        box-sizing: border-box;
-        padding: 12px;
-        margin: 0 0 15px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        padding: 0.875rem 1rem;
+        margin: 0 0 1.25rem 0;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
         display: block;
-        height: 45px;
+        transition: all 0.2s;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
+      #app input:focus,
+      #app select.form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
       }
 
       .form-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
         text-align: left;
       }
 
       label {
         display: block;
         text-align: left;
-        margin-left: 0;
-        font-weight: bold;
-        font-size: 0.9rem;
-        margin-bottom: 5px;
+        margin: 0 0 6px 0;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text-primary);
       }
 
       /* Buttons */
       .btn {
-        background-color: var(--gov-blue);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-dark)
+        );
         color: white;
         border: none;
-        padding: 12px 24px;
-        border-radius: 4px;
+        padding: 0.875rem 1.5rem;
+        border-radius: 9999px;
         font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
         width: 100%;
-        transition: background 0.3s;
+        transition: all 0.2s;
+        box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
       }
 
       .btn:hover {
-        background-color: #000050;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
       }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
       .btn-text {
         background: none;
-        color: var(--text-main);
+        color: var(--primary-color);
         width: auto;
+        text-decoration: none;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        display: inline-block;
+        padding: 4px;
+      }
+
+      .btn-text:hover {
         text-decoration: underline;
-        margin-bottom: 10px;
       }
 
       /* Results Grid */
       .results-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
         width: 100%;
       }
 
@@ -149,63 +236,74 @@
         max-width: 1200px;
       }
 
-      @media (max-width: 900px) {
-        .results-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
       @media (max-width: 600px) {
-        .results-grid {
-          grid-template-columns: 1fr;
-        }
         .form-grid {
           grid-template-columns: 1fr;
         }
       }
 
       .scheme-card {
-        background: var(--white);
+        background: var(--surface-color);
         margin-bottom: 0;
         padding: 1.5rem;
-        border-radius: 8px;
-        border-left: 6px solid #ccc;
+        border-radius: var(--radius);
+        border: 1px solid var(--border-color);
         position: relative;
         text-align: left;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+      }
+
+      .scheme-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        z-index: 2; /* Ensure it stays on top */
+        border-color: var(--primary-color);
       }
 
       .scheme-card.eligible {
-        border-left-color: var(--gov-green);
+        border-top: 4px solid var(--success-color);
       }
       .scheme-card.not-eligible {
-        border-left-color: #d32f2f;
+        border-top: 4px solid #ef4444;
       }
 
       .status-badge {
-        display: inline-block;
-        padding: 5px 12px;
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 12px;
         border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: bold;
-        margin-top: 10px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
 
       .eligible .status-badge {
-        background: #e8f5e9;
-        color: var(--gov-green);
+        background: #dcfce7;
+        color: var(--success-color);
       }
       .not-eligible .status-badge {
-        background: #ffebee;
-        color: #d32f2f;
+        background: #fee2e2;
+        color: #ef4444;
       }
 
       .official-link {
         float: right;
-        color: var(--gov-blue);
-        font-weight: bold;
+        color: var(--primary-color);
+        font-weight: 500;
         text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .official-link:hover {
+        text-decoration: underline;
       }
 
       /* Tabs */
@@ -216,7 +314,7 @@
         gap: 15px;
       }
       .tab-btn {
-        background: #e0e0e0;
+        background: #266ad8;
         color: #333;
         border: none;
         padding: 10px 25px;
@@ -227,7 +325,7 @@
       }
       .tab-btn.active {
         background: var(--gov-blue);
-        color: white;
+        color: rgb(99, 99, 99);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
@@ -245,69 +343,138 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background: var(--gov-orange);
+        background: var(--primary-color);
         color: white;
-        padding: 15px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
         font-size: 1.5rem;
+        z-index: 1000;
+        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .chat-btn:hover {
+        transform: scale(1.1);
       }
 
       .chat-window {
         position: fixed;
-        bottom: 80px;
+        bottom: 90px;
         right: 20px;
-        width: 300px;
-        height: 400px;
+        width: 350px;
+        height: 500px;
         background: white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
         display: none; /* Hidden by default */
         flex-direction: column;
         overflow: hidden;
+        z-index: 1000;
+        border: 1px solid var(--border-color);
+        animation: slideUp 0.3s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .chat-header {
-        background: var(--gov-blue);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-dark)
+        );
         color: white;
-        padding: 10px;
+        padding: 16px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
       }
       .chat-body {
         flex: 1;
-        padding: 10px;
+        padding: 16px;
         overflow-y: auto;
-        background: #f9f9f9;
+        background: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
       .chat-input {
+        padding: 12px;
+        background: white;
+        border-top: 1px solid var(--border-color);
         display: flex;
-        border-top: 1px solid #ddd;
+        gap: 8px;
+        align-items: center;
       }
       .chat-input input {
-        border: none;
-        padding: 10px;
+        border: 1px solid var(--border-color);
+        padding: 10px 16px;
+        border-radius: 24px;
         flex: 1;
         margin: 0;
+        outline: none;
+        font-size: 0.95rem;
+      }
+
+      .chat-input input:focus {
+        border-color: var(--primary-color);
+      }
+
+      .chat-input button {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+
+      .chat-input button:hover {
+        background: var(--primary-dark);
       }
 
       .msg {
-        padding: 8px 12px;
-        border-radius: 15px;
-        margin-bottom: 8px;
-        max-width: 80%;
-        font-size: 0.9rem;
+        padding: 10px 16px;
+        border-radius: 18px;
+        max-width: 85%;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        word-wrap: break-word;
       }
       .msg.bot {
-        background: #e0e0e0;
+        background: white;
+        color: var(--text-primary);
         align-self: flex-start;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
       }
       .msg.user {
-        background: #bbdefb;
+        background: var(--primary-color);
+        color: white;
         align-self: flex-end;
-        margin-left: auto;
+        border-bottom-right-radius: 4px;
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
       }
 
       @keyframes fadeIn {
@@ -322,41 +489,72 @@
       }
 
       footer {
-        background: var(--gov-blue);
-        color: white;
+        background-color: var(--surface-color);
+        color: var(--text-secondary);
         text-align: center;
-        padding: 1.5rem;
+        padding: 2rem;
         margin-top: auto;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.875rem;
+      }
+
+      footer p {
+        margin: 0;
       }
     </style>
   </head>
   <body>
     <header>
-      <div class="logo"><span>🏛️</span> Equira</div>
-      <div style="display: flex; align-items: center; gap: 10px">
+      <a href="#" class="logo"><i class="fas fa-landmark"></i> Equira</a>
+      <div style="display: flex; align-items: center; gap: 15px">
         <button
           class="btn"
-          style="width: auto; padding: 8px 15px; font-size: 0.9rem"
+          style="width: auto; padding: 0.5rem 1.25rem; font-size: 0.9rem"
           onclick="switchToLogin()"
         >
           Login / Register
         </button>
-        <span style="font-size: 0.9rem">Language:</span>
-        <select id="langSelect" onchange="changeLanguage()">
-          <option value="en">English</option>
-          <option value="hi">हिंदी</option>
-          <option value="ta">தமிழ்</option>
-        </select>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+          "
+        >
+          <i class="fas fa-globe text-secondary"></i>
+          <select id="elect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="ta">தமிழ்</option>
+          </select>
+        </div>
       </div>
     </header>
 
     <div id="app"></div>
 
-    <button class="chat-btn" onclick="toggleChat()">💬</button>
+    <button class="chat-btn" onclick="toggleChat()">
+      <i class="fas fa-comment-dots"></i>
+    </button>
     <div class="chat-window" id="chatWindow">
       <div class="chat-header">
-        <span>Your Assistance</span>
-        <span style="cursor: pointer" onclick="toggleChat()">✖</span>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <i class="fas fa-robot"></i>
+          <span>AI Assistant</span>
+        </div>
+        <button
+          onclick="toggleChat()"
+          style="
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+          "
+        >
+          <i class="fas fa-times"></i>
+        </button>
       </div>
       <div class="chat-body" id="chatBody">
         <div class="msg bot">Hi There! How may I help you?</div>
@@ -368,6 +566,9 @@
           placeholder="Type here..."
           onkeypress="handleChatKey(event)"
         />
+        <button onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </div>
     </div>
 
@@ -1168,32 +1369,45 @@
 
         if (currentPage === "login") {
           app.innerHTML = `
-                    <div class="card" style="max-width: 400px;">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">🦁</div>
-                        <h2>${t.title}</h2>
-                        <p>${t.subtitle}</p>
-                        <form onsubmit="handleLogin(event)">
-                            <input type="text" id="loginPhone" placeholder="${t.phonePH}" required minlength="10" maxlength="10" pattern="[0-9]+">
-                            <input type="password" id="loginPassword" placeholder="${t.passwordPH}" required>
-                            <button type="submit" class="btn">${t.loginBtn}</button>
+                    <div class="card" style="max-width: 500px;">
+                        <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: flex; justify-content: center;">🦁</div>
+                        <h2 style="margin-bottom: 0.5rem;">${t.title}</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">${t.subtitle}</p>
+                        <form onsubmit="handleLogin(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Phone Number</label>
+                                <input type="text" id="loginPhone" placeholder="${t.phonePH}" required minlength="10" maxlength="10" pattern="[0-9]+" style="margin: 0; width: 100%; padding: 0.875rem 1rem; border: 2px solid var(--border-color); border-radius: 8px; font-size: 1rem; transition: all 0.2s;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Password</label>
+                                <input type="password" id="loginPassword" placeholder="${t.passwordPH}" required style="margin: 0; width: 100%; padding: 0.875rem 1rem; border: 2px solid var(--border-color); border-radius: 8px; font-size: 1rem; transition: all 0.2s;">
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%; margin: 1rem 0 0 0;">${t.loginBtn}</button>
                         </form>
-                        <p style="margin-top: 15px;">
-                            <a href="#" onclick="switchToRegister()" style="color: var(--gov-blue); text-decoration: none;">${t.noAccount}</a>
+                        <p style="margin-top: 1.5rem; text-align: center; color: var(--text-secondary);">
+                            ${t.noAccount} <a href="#" onclick="switchToRegister()" style="color: var(--primary-color); text-decoration: none; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">here</a>
                         </p>
                     </div>
                 `;
         } else if (currentPage === "register") {
           app.innerHTML = `
-                    <div class="card" style="max-width: 400px;">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">📝</div>
-                        <h2>${t.registerTitle}</h2>
-                        <form onsubmit="handleRegister(event)">
-                            <input type="text" id="regPhone" placeholder="${t.phonePH}" required minlength="10" maxlength="10" pattern="[0-9]+">
-                            <input type="password" id="regPassword" placeholder="${t.passwordPH}" required>
-                            <button type="submit" class="btn">${t.registerBtn}</button>
+                    <div class="card" style="max-width: 500px;">
+                        <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: flex; justify-content: center;">📝</div>
+                        <h2 style="margin-bottom: 0.5rem;">${t.registerTitle}</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Create your account to get started</p>
+                        <form onsubmit="handleRegister(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Phone Number</label>
+                                <input type="text" id="regPhone" placeholder="${t.phonePH}" required minlength="10" maxlength="10" pattern="[0-9]+" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid var(--border-color); border-radius: 8px; font-size: 1rem; transition: all 0.2s;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Password</label>
+                                <input type="password" id="regPassword" placeholder="${t.passwordPH}" required style="width: 100%; padding: 0.875rem 1rem; border: 2px solid var(--border-color); border-radius: 8px; font-size: 1rem; transition: all 0.2s;">
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%; margin: 1rem 0 0 0;">${t.registerBtn}</button>
                         </form>
-                        <p style="margin-top: 15px;">
-                            <a href="#" onclick="switchToLogin()" style="color: var(--gov-blue); text-decoration: none;">${t.haveAccount}</a>
+                        <p style="margin-top: 1.5rem; text-align: center; color: var(--text-secondary);">
+                            ${t.haveAccount} <a href="#" onclick="switchToLogin()" style="color: var(--primary-color); text-decoration: none; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">here</a>
                         </p>
                     </div>
                 `;
@@ -1313,6 +1527,8 @@
                             </div>
                             
                             <button type="submit" class="btn">${t.checkBtn}</button>
+                        </form>
+                    </div>
 
                 `;
         } else if (currentPage === "results") {
@@ -1682,53 +1898,63 @@
       function toggleChat() {
         const win = document.getElementById("chatWindow");
         win.style.display = win.style.display === "flex" ? "none" : "flex";
-      }
-
-      async function handleChatKey(e) {
-        if (e.key === "Enter") {
-          const input = document.getElementById("chatInput");
-          const text = input.value;
-          if (!text) return;
-
-          addMsg(text, "user");
-          input.value = "";
-
-          // Call backend API (Gemini)
-          try {
-            // Show loading or typing indicator could be good, but for now simple request
-            const response = await fetch("http://localhost:5000/api/chat", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ message: text }),
-            });
-
-            const data = await response.json();
-            if (data.success) {
-              addMsg(data.reply, "bot");
-            } else {
-              addMsg(
-                "Sorry, I encountered an error: " +
-                  (data.error || "Unknown error"),
-                "bot",
-              );
-            }
-          } catch (error) {
-            console.error("Chat Error:", error);
-            addMsg(
-              "Sorry, I can't connect to the server right now. Make sure the Node.js server is running.",
-              "bot",
-            );
-          }
+        if (win.style.display === "flex") {
+          document.getElementById("chatInput").focus();
         }
       }
 
-      function addMsg(text, sender) {
+      function handleChatKey(e) {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      }
+
+      async function sendMessage() {
+        const input = document.getElementById("chatInput");
+        const text = input.value.trim();
+        if (!text) return;
+
+        addMsg(text, "user");
+        input.value = "";
+
+        // Show typing indicator
+        const typingId = addMsg("Typing...", "bot", true);
+
+        try {
+          const response = await fetch("http://localhost:5000/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text }),
+          });
+
+          const data = await response.json();
+
+          // Remove typing indicator
+          const typingMsg = document.getElementById(typingId);
+          if (typingMsg) typingMsg.remove();
+
+          if (data.success) {
+            addMsg(data.reply, "bot");
+          } else {
+            addMsg("Sorry, I encountered an error.", "bot");
+          }
+        } catch (error) {
+          console.error("Chat Error:", error);
+          const typingMsg = document.getElementById(typingId);
+          if (typingMsg) typingMsg.remove();
+          addMsg("Connection error.", "bot");
+        }
+      }
+
+      function addMsg(text, sender, isTyping = false) {
         const body = document.getElementById("chatBody");
         const div = document.createElement("div");
         div.className = `msg ${sender}`;
         div.innerText = text;
+        if (isTyping) div.id = "typing-" + Date.now();
         body.appendChild(div);
         body.scrollTop = body.scrollHeight;
+        return div.id;
       }
     </script>
   </body>

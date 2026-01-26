@@ -13,26 +13,20 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="/static/style.css" />
+    <style>
+      .hidden {
+        display: none !important;
+      }
+    </style>
   </head>
   <body>
     <header>
       <div class="header-container">
-        <button
-          onclick="goBack()"
-          style="
-            background: none;
-            border: none;
-            color: #000080;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-right: 15px;
-          "
-          title="Go Back"
-        >
+        <button onclick="goBack()" class="back-btn" title="Go Back">
           <i class="fas fa-arrow-left"></i>
         </button>
         <div class="logo-section">
-          <i class="fas fa-heartbeat fa-2x" style="color: #000080"></i>
+          <i class="fas fa-heartbeat fa-2x logo-icon"></i>
           <span class="logo-text">Rural Health Connect</span>
         </div>
         <div class="header-controls">
@@ -52,11 +46,11 @@
     <main>
       <div class="main-card">
         <div class="card-header-icon">
-          <i class="fas fa-hospital-user fa-3x" style="color: #ff9933"></i>
+          <i class="fas fa-hospital-user fa-3x"></i>
         </div>
         <h2 id="t-title">Find Nearby Medical Help</h2>
         <p class="subtitle" id="t-subtitle">
-          Connect with rural hospitals instantly
+          Connect with rural hospitals instantly and securely.
         </p>
 
         <section class="search-section">
@@ -106,17 +100,23 @@
       </p>
     </footer>
 
-    <button class="chat-btn" onclick="toggleChat()">💬</button>
+    <button class="chat-btn" onclick="toggleChat()">
+      <i class="fas fa-comment-medical"></i>
+    </button>
     <div class="chat-window" id="chatWindow">
       <div class="chat-header">
         <span
           ><i class="fas fa-robot"></i>
           <span id="t-ai-help">AI Assistant</span></span
         >
-        <span style="cursor: pointer" onclick="toggleChat()">✖</span>
+        <button class="close-chat" onclick="toggleChat()">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
       <div class="chat-body" id="chatBody">
-        <div class="msg bot">Hello! How can I help?</div>
+        <div class="msg bot">
+          Hello! How can I help you regarding medical services today?
+        </div>
       </div>
       <div class="chat-input">
         <input
@@ -125,11 +125,44 @@
           placeholder="Type here..."
           onkeypress="handleChatKey(event)"
         />
+        <button onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="/static/translations.js"></script>
     <script src="/static/script.js"></script>
+    <script>
+      // Configure Map Layers
+      window.addEventListener("load", () => {
+        if (typeof map !== "undefined") {
+          map.eachLayer((layer) => {
+            if (layer instanceof L.TileLayer) map.removeLayer(layer);
+          });
+
+          const terrain = L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+              attribution: "&copy; OpenStreetMap contributors",
+            },
+          );
+
+          const satellite = L.tileLayer(
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            {
+              attribution:
+                "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+            },
+          );
+
+          terrain.addTo(map);
+          L.control
+            .layers({ Terrain: terrain, Satellite: satellite })
+            .addTo(map);
+        }
+      });
+    </script>
   </body>
 </html>
